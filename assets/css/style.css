@@ -1,0 +1,42 @@
+body {
+    margin: 15px!important;
+    font-family: 'Times New Roman', Times, serif!important;
+}
+
+/* html {
+    background-image: url(../images/passport1.jpg)!important;
+    background-repeat: repeat;
+    background-size: 20%;
+} */
+
+#open-gif {
+    float: left;
+    width: 300px;
+    height: auto;
+}
+
+#searchText {
+    margin: 0 0 15px 15px;
+}
+
+.bodyText {
+    margin: 0 0 0 15px;
+}
+
+.input-box {
+    width: 200px!important;
+    height: 50px!important;;
+}
+
+.button-text {
+    margin: 10px 3px 10px 0;
+}
+
+.button-gif {
+    margin: 10px;
+}
+
+.rating {
+    padding: 50px;
+}
+
