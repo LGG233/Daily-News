@@ -9,6 +9,10 @@ body {
     background-size: 20%;
 } */
 
+.lang-btn {
+    float: right;
+}
+
 #open-gif {
     float: left;
     width: 300px;
