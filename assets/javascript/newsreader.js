@@ -3,53 +3,14 @@ var topics = ["France", "China", "Europe", "Japan", "Cycling", "Wine", "Ohio", "
 var sujets = ["France", "Chine", "Europe", "Japon", "Cyclisme", "Vin", "Ohio", "Minnesota"];
 var language = "English";
 var articleSearch = "";
-renderButtons();
-getArticles();
-frenchChooser();
-englishChooser();
 
 $(document).ready(function () {
-    $("#add-button").on("click", function (event) {
-        event.preventDefault();
-        searchText = $("#searchText").val().trim();
-        $("#searchText").text("");
-        if (language === "English") {
-            topics.push(searchText);
-        } else {
-            sujets.push(searchText);
-        }
-        renderButtons();
-        getArticles();
-    })
+    renderButtons();
+    getArticles();
+    frenchChooser();
+    englishChooser();
+    addSearchButton();
 });
-
-function frenchChooser() {
-    $("#french").on("click", function () {
-        language = "French";
-        $("#articles-space").empty();
-        $("#articles-title").empty();
-        $("#main-title").text("Toutes Les Nouvelles Dont Vous Avez Besoin");
-        $("#sub-title").text("");
-        $("#instructions").html("Cliquez un sujet pour voir jusqu'à dix articles de <em>Libération</em> à ce sujet");
-        $("#search-input").html("<span id='search-input'><strong>Que désirez-vous voir de plus?</strong><input id='searchText' type='text'>");
-        $("#add-button").html("On y va !");
-        renderButtons(sujets);
-    })
-};
-
-function englishChooser() {
-    $("#english").on("click", function () {
-        language = "English";
-        $("#articles-space").empty();
-        $("#articles-title").empty();
-        $("#main-title").text("All The News That's Fit To Read");
-        $("#sub-title").html("<em>New York Times</em> subscription required");
-        $("#instructions").html("Click a button to get up to ten articles on that topic from the <em>New York Times</em>");
-        $("#search-input").html("<span id='search-input'><strong>What else do you want to read?</strong><input id='searchText' type='text'>");
-        $("#add-button").html("Takeoff!");
-        renderButtons(topics);
-    })
-};
 
 function renderButtons() {
     $("#button-space").empty();
@@ -74,9 +35,54 @@ function renderButtons() {
     }
 }
 
+function addSearchButton() {
+    $("#add-button").on("click", function (event) {
+        event.preventDefault();
+        searchText = $("#searchText").val().trim();
+        $("#searchText").text("");
+        if (language === "English") {
+            topics.push(searchText);
+        } else {
+            sujets.push(searchText);
+        }
+        renderButtons();
+    })
+}
+
+function frenchChooser() {
+    $("#french").on("click", function () {
+        language = "French";
+        $("#main-title").text("Toutes Les Nouvelles Dont Vous Avez Besoin");
+        $("#sub-title").html("Abonnement obligatoire à <em>Libération</em> pour lire les articles");
+        $("#instructions").html("Cliquez un sujet pour voir jusqu'à dix articles de <em>Libération</em> à ce sujet");
+        $("#search-input").html("<span id='search-input'><strong>Que désirez-vous voir de plus?</strong><input id='searchText' type='text'>");
+        $("#add-button").html("On y va !");
+        $("#articles-space").empty();
+        $("#articles-title").empty();
+        renderButtons(sujets);
+        getArticles();
+    })
+};
+
+function englishChooser() {
+    $("#english").on("click", function () {
+        language = "English";
+        $("#main-title").text("All The News That's Fit To Read");
+        $("#sub-title").html("<em>New York Times</em> subscription required");
+        $("#instructions").html("Click a button to get up to ten articles on that topic from the <em>New York Times</em>");
+        $("#search-input").html("<span id='search-input'><strong>What else do you want to read?</strong><input id='searchText' type='text'>");
+        $("#add-button").html("Takeoff!");
+        $("#articles-space").empty();
+        $("#articles-title").empty();
+        renderButtons(topics);
+        getArticles();
+    })
+};
+
 function getArticles() {
     $(".button-text").on("click", function () {
         articleSearch = $(this).attr("data-name");
+        console.log(articleSearch)
         if (language === "English") {
             engArticleSearch();
         } else {
@@ -87,6 +93,7 @@ function getArticles() {
 
 
 function engArticleSearch() {
+    console.log(articleSearch);
     var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
     $.ajax({
         url: queryURL,
@@ -109,6 +116,7 @@ function engArticleSearch() {
 }
 
 function frenArticleSearch() {
+    console.log(articleSearch);
     var queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
     $.ajax({
         url: queryURL,
