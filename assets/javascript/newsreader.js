@@ -46,6 +46,7 @@ function addSearchButton() {
             sujets.push(searchText);
         }
         renderButtons();
+        getArticles();
     })
 }
 
@@ -53,8 +54,9 @@ function frenchChooser() {
     $("#french").on("click", function () {
         language = "French";
         $("#main-title").text("Toutes Les Nouvelles Dont Vous Avez Besoin");
-        $("#sub-title").html("Abonnement obligatoire à <em>Libération</em> pour lire les articles");
-        $("#instructions").html("Cliquez un sujet pour voir jusqu'à dix articles de <em>Libération</em> à ce sujet");
+        // $("#sub-title").html("Abonnement obligatoire à <em>Libération</em> pour lire les articles");
+        $("#reading").html("<br><br>Vos articles viennent de <em>Libération</em>. Abonnement obligatoire");
+        $("#lang-lead").html("Cliquez un sujet pour voir jusqu'à dix articles de <em>Libération</em> à ce sujet");
         $("#search-input").html("<span id='search-input'><strong>Que désirez-vous voir de plus?</strong><input id='searchText' type='text'>");
         $("#add-button").html("On y va !");
         $("#articles-space").empty();
@@ -68,8 +70,9 @@ function englishChooser() {
     $("#english").on("click", function () {
         language = "English";
         $("#main-title").text("All The News That's Fit To Read");
-        $("#sub-title").html("<em>New York Times</em> subscription required");
-        $("#instructions").html("Click a button to get up to ten articles on that topic from the <em>New York Times</em>");
+        // $("#sub-title").html("<em>New York Times</em> subscription required");
+        $("#reading").html("<br><br>Articles come from <em>The New York Times</em>. Subscription required");
+        $("#lang-lead").html("Click a button to get up to ten articles on that topic from the <em>New York Times</em>");
         $("#search-input").html("<span id='search-input'><strong>What else do you want to read?</strong><input id='searchText' type='text'>");
         $("#add-button").html("Takeoff!");
         $("#articles-space").empty();
@@ -101,12 +104,12 @@ function engArticleSearch() {
     })
         .then(function (response) {
             $("#articles-space").empty();
-            $("#articles-title").html("<h1>Here are your articles on " + articleSearch + ". Enjoy!</h1>");
+            $("#articles-title").html("<h31>Here are your articles on " + articleSearch + ". Enjoy!</h31>");
             for (var j = 0; j < 10; j++) {
                 var articlesDiv = $("<span class='article'>");
-                var title = $("<p>").html("<h2><a target='_blank' href='" + response.response.docs[j].web_url + "'>" + response.response.docs[j].headline.main + "</a></h2>");
-                var byline = $("<p>").html("<h5>" + response.response.docs[j].byline.original + "</h5>");
-                var blurb = $("<p>").html("<h4>" + response.response.docs[j].lead_paragraph + "</h4><br>");
+                var title = $("<p>").html("<h4><a target='_blank' href='" + response.response.docs[j].web_url + "'>" + response.response.docs[j].headline.main + "</a></h4>");
+                var byline = $("<p>").html(response.response.docs[j].byline.original);
+                var blurb = $("<p>").html(response.response.docs[j].lead_paragraph);
                 articlesDiv.append(title);
                 articlesDiv.append(byline);
                 articlesDiv.append(blurb);
@@ -124,12 +127,12 @@ function frenArticleSearch() {
     })
         .then(function (response) {
             $("#articles-space").empty();
-            $("#articles-title").html("<h1>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h1>");
+            $("#articles-title").html("<h3>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h3>");
             for (var j = 0; j < 10; j++) {
                 var articlesDiv = $("<span class='article'>");
-                var title = $("<p>").html("<h2><a target='_blank' href='" + response.articles[j].url + "'>" + response.articles[j].title + "</a></h2>");
-                var byline = $("<p>").html("<h5>" + response.articles[j].author + "</h5>");
-                var blurb = $("<p>").html("<h4>" + response.articles[j].content + "</h4><br>");
+                var title = $("<p>").html("<h4><a target='_blank' href='" + response.articles[j].url + "'>" + response.articles[j].title + "</a></h4>");
+                var byline = $("<p>").html(response.articles[j].author);
+                var blurb = $("<p>").html(response.articles[j].content);
                 articlesDiv.append(title);
                 articlesDiv.append(byline);
                 articlesDiv.append(blurb);

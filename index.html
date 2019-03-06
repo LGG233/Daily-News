@@ -11,37 +11,56 @@
 </head>
 
 <body>
-    <div class="jumbotron banner text-center">
+    <div class="jumbotron banner title-bar text-center">
         <h1 class="display-4" id="main-title"><strong>All The News That's Fit To Read</strong></h1>
-        <h4 id="sub-title"><em>New York Times</em> Subscription Required</h4>
+        <!-- <h4 id="sub-title"><em>New York Times</em> Subscription Required</h4> -->
         <button id="english" class="lang-btn btn-primary">English</button>
         <button id="french" class="lang-btn btn-primary">Français</button>
     </div>
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-4">
-            <div class="bodyText" id="instructions">Click a button to get up to ten articles on that topic from the <em>New York Times</em></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <p id="reading"><br><br>Articles come from <em>The New York Times</em>. Subscription required.</p>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p id="lang-lead">Click a button to get up to ten articles on that topic from the <em>New
+                                    York
+                                    Times</em></p>
+                            <div class="bodyText" id="button-space">Buttons go here</div>
+                        </blockquote>
+                        <div class="card-body">
+                            <div id="col-md-6">
+                                <blockquote class="blockquote mb-0">
+                                    <span id="search-input"><strong>What else do you want to read?</strong><input
+                                            id="searchText" type="text"></span>
+                                    <button class="btn-primary" id="add-button" type="submit">Set me up!</button>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-4">
-            <div class="bodyText" id="button-space">Buttons go here</div>
+    <div class="container article-body">
+        <div class="row">
+            <div class="col-lg-2 spacer">
+                <p id="placeholder-space1"></p>
+            </div>
+            <div class="col-lg-8 col-md-6 col-sm-4 bodyText">
+                <h4 id=articles-title></h4>
+                <div id="articles-space"></div>
+            </div>
+            <div class="col-lg-2 spacer">
+                <p id="placeholder-space2"></p>
+            </div>
         </div>
     </div>
-    <form>
-        <div class="col-lg-8 col-md-6 col-sm-4">
-            <span id="search-input"><strong>What else do you want to read?</strong><input id="searchText"
-                    type="text"></span>
-            <button class="btn-primary" id="add-button" type="submit">Set me up!</button>
-        </div>
-    </form>
-    <div class="row">
-        <div class="col-lg-12 col-md-8 col-sm-4 bodyText">
-            <h4 id=articles-title></h4>
-            <div id="articles-space"></div>
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/newsreader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/javascript/newsreader.js"></script>
 </body>
 
 </html>
