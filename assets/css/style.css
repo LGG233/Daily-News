@@ -1,8 +1,15 @@
 body {
     margin: 15px!important;
     font-family: Arial, Helvetica, sans-serif!important;
+    background-color: rgb(14, 53, 230)!important;
 }
 
+.header-text {
+    color: black;
+}
+.container {
+    color: white!important;
+}
 .title-bar {
     font-family: 'Times New Roman', Times, serif!important;
     color: black;
@@ -12,26 +19,37 @@ body {
 		-2px 2px 0 white,
 		2px 2px 0 white;
     background-image: url(../images/blueblancrouge.jpg)!important;
-    background-color: white!important;
+    background-color: rgb(14, 53, 230)!important;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.article {
+    color: black;
+    font-size: 9pt;
+    margin-bottom: 10px;
+    padding: 6px;
+    display: inline-block;
+}
+
+.article-container {
+    display: inline-block;
+    margin: 15px 0 0 0;
+    
+}
+
 #reading {
     font-size: 10pt;
-}
-/* html {
-    background-image: url(../images/passport1.jpg)!important;
-    background-repeat: repeat;
-    background-size: 20%;
-} */
-
-.article-body {
-    margin: 15px 0 0 0;
+    color: white;
 }
 
 .lang-btn {
     float: right;
+    margin: 23px 3px 3px 3px;
+}
+
+#english {
+    margin-right: 100px;
 }
 
 #open-gif {
@@ -62,7 +80,4 @@ body {
     margin: 10px;
 }
 
-.rating {
-    padding: 50px;
-}
 

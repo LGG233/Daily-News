@@ -13,9 +13,8 @@
 <body>
     <div class="jumbotron banner title-bar text-center">
         <h1 class="display-4" id="main-title"><strong>All The News That's Fit To Read</strong></h1>
-        <!-- <h4 id="sub-title"><em>New York Times</em> Subscription Required</h4> -->
-        <button id="english" class="lang-btn btn-primary">English</button>
-        <button id="french" class="lang-btn btn-primary">Français</button>
+        <button id="english" class="lang-btn btn-primary" data-name="English">English</button>
+        <button id="french" class="lang-btn btn-primary" data-name="French">Français</button>
     </div>
     <div class="container">
         <div class="row">
@@ -24,7 +23,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body header-text">
                         <blockquote class="blockquote mb-0">
                             <p id="lang-lead">Click a button to get up to ten articles on that topic from the <em>New
                                     York
@@ -45,22 +44,26 @@
             </div>
         </div>
     </div>
-    <div class="container article-body">
+    <div class="container article-container">
         <div class="row">
             <div class="col-lg-2 spacer">
                 <p id="placeholder-space1"></p>
             </div>
             <div class="col-lg-8 col-md-6 col-sm-4 bodyText">
                 <h4 id=articles-title></h4>
-                <div id="articles-space"></div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-lg-2 spacer">
-                <p id="placeholder-space2"></p>
+                <p id="placeholder-space1"></p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-4 bodyText">
+                <h4 id=articles-space></h4>
             </div>
         </div>
     </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/javascript/newsreader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/newsreader.js"></script>
 </body>
 
 </html>
