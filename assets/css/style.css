@@ -1,14 +1,19 @@
 body {
     margin: 15px!important;
     font-family: Arial, Helvetica, sans-serif!important;
-    background-color: rgb(14, 53, 230)!important;
+    background-color:white!important;
 }
 
 .header-text {
     color: black;
 }
+
+.blockquote {
+    font-size: 12pt!important;
+}
+
 .container {
-    color: white!important;
+    color: blue!important;
 }
 .title-bar {
     font-family: 'Times New Roman', Times, serif!important;
@@ -19,28 +24,28 @@ body {
 		-2px 2px 0 white,
 		2px 2px 0 white;
     background-image: url(../images/blueblancrouge.jpg)!important;
-    background-color: rgb(14, 53, 230)!important;
+    background-color:white!important;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.title {
+    font-size: 12pt;
+    color: black!important;
+}
 .article {
     color: black;
-    font-size: 9pt;
+    font-size: 10pt;
     margin-bottom: 10px;
     padding: 6px;
     display: inline-block;
+    /* min-width: 300px; */
+    width: 225px;
 }
 
 .article-container {
     display: inline-block;
     margin: 15px 0 0 0;
-    
-}
-
-#reading {
-    font-size: 10pt;
-    color: white;
 }
 
 .lang-btn {
@@ -49,13 +54,8 @@ body {
 }
 
 #english {
-    margin-right: 100px;
-}
-
-#open-gif {
-    float: left;
-    width: 300px;
-    height: auto;
+    position: relative;
+    right: 45;
 }
 
 #searchText {
@@ -64,7 +64,6 @@ body {
 
 .bodyText {
     margin: 0 0 0 15px;.element {
-
 }
 
 .input-box {
@@ -79,5 +78,3 @@ body {
 .button-gif {
     margin: 10px;
 }
-
-

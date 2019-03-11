@@ -4,15 +4,11 @@ var language = "English";
 var searchText = "";
 var articleSearch = "";
 var searchDB = [];
-var engSearch = ["response.response.docs", "web_url", "headline.main", "byline.original", "lead_paragraph"];
-var frenSearch = ["response.articles", "url", "title", "author", "content"];
-searchDB = engSearch; // set english as default
-
+var myText = $("<div class='card-columns'></div>");
 
 $(document).ready(function () {
-    console.log("I'm ready!");
     renderButtons();
-    getArticles(engSearch);
+    getArticles();
     langChooser();
     addSearchButton();
     frenchify();
@@ -38,7 +34,6 @@ function englishify() {
     $("#articles-space").empty();
     $("#articles-title").empty();
 }
-
 
 function renderButtons() {
     $("#button-space").empty();
@@ -88,26 +83,21 @@ function langChooser() {
     })
 }
 
-
 function getArticles() {
     console.log("getArticles is running");
     $(".button-text").on("click", function () {
+        $("#articles-space").empty();
         articleSearch = $(this).attr("data-name");
-        // console.log("this should be the search text - articleSearch: " + articleSearch);
         if (language === "English") {
             queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy"
-            // console.log(queryURL);
-            $("#articles-title").html("<h3>Here are your articles on " + articleSearch + ". Enjoy!</h3>");
+            // $("#articles-title").html("<h3>Here are your articles on " + articleSearch + ". Enjoy!</h3>");
             engArticleSearch();
-            // searchDB = engSearch;
         } else {
             queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
-            // searchDB = frenSearch;
-            $("#articles-title").html("<h3>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h3>");
+            // $("#articles-title").html("<h3>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h3>");
             frenArticleSearch();
         }
-    }
-    )
+    })
 };
 
 function engArticleSearch() {
@@ -118,23 +108,16 @@ function engArticleSearch() {
     })
         .then(function (response) {
             console.log(response);
-            $("#articles-space").empty();
-            $("#articles-title").html("<h3>Here are your articles on " + articleSearch + ". Enjoy!</h3>");
+            // $("#articles-title").html("<h3>Here are your articles on " + articleSearch + ". Enjoy!</h3>");
             for (var j = 0; j < 10; j++) {
-                var myText = $("<div class='col-lg-12'></div>");
-                var articlesDiv = $("<div class='card article'>");
-                var title = $("<p class='card title'>").html("<h6><a target='_blank' href='" + response.response.docs[j].web_url + "'>" + response.response.docs[j].headline.main + "</a></h6>");
-                var byline = $("<p class='card-text'>").html(response.response.docs[j].byline.original);
-                var blurb = $("<p class='card-text'>").html(response.response.docs[j].lead_paragraph);
-                articlesDiv.append(title);
-                articlesDiv.append(byline);
-                articlesDiv.append(blurb);
-                articlesDiv.appendTo(myText);
-                $("#articles-space").prepend(myText);
+                var headline = response.response.docs[j].headline.main;
+                var url = response.response.docs[j].web_url;
+                var author = response.response.docs[j].byline_original;
+                var content = response.response.docs[j].lead_paragraph;
+                renderHTML(url, headline, author, content);
             };
-        });
+        })
 }
-
 
 function frenArticleSearch() {
     var queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
@@ -144,60 +127,28 @@ function frenArticleSearch() {
     })
         .then(function (response) {
             console.log(response);
-            $("#articles-space").empty();
-            $("#articles-title").html("<h3>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h3>");
+            // $("#articles-space").empty();
+            // $("#articles-title").html("<h3>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h3>");
             for (var j = 0; j < 10; j++) {
-                var myText = $("<div class='col-lg-12'></div>");
-                var articlesDiv = $("<div class='card article'>");
-                var title = $("<p class='card title'>").html("<h6><a target='_blank' href='" + response.articles[j].url + "'>" + response.articles[j].title + "</a></h6>");
-                var byline = $("<p class='card-text'>").html(response.articles[j].author);
-                var blurb = $("<p class='card-text'>").html(response.articles[j].content);
-                articlesDiv.append(title);
-                articlesDiv.append(byline);
-                articlesDiv.append(blurb);
-                articlesDiv.appendTo(myText);
-                $("#articles-space").prepend(myText);
+                var headline = response.articles[j].title;
+                var url = response.articles[j].url;
+                var author = response.articles[j].author;
+                var content = response.articles[j].content;
+                renderHTML(url, headline, author, content);
             };
-        });
+        })
 };
-        //         $.ajax({
-        //             url: queryURL,
-        //             method: "GET"
-        //         })
-        //             .then(function (response) {
-        //                 console.log(response)
-        //                 var jLead = searchDB[0];
-        //                 var jURL = searchDB[1];
-        //                 var jHead = searchDB[2];
-        //                 var jByline = searchDB[3];
-        //                 var jBlurb = searchDB[4];
-        //                 console.log(response + "." + jLead[8] + "." + jHead)
-        //                 $("#articles-space").empty();
-        //                 for (var j = 0; j < 10; j++) {
-        //                     var articlesDiv = $("<span class='article'>");
-        //                     var articleTitle = $("<p>").html("<h4><a target='_blank' href=" + jLead[j].jURL + ">" + jLead[j].jHead + "</a></h4>");
-        //                     var articleByline = $("<p>").html(jLead[j].jByline);
-        //                     var articleBlurb = $("<p>").html(jLead[j].jBlurb);
-        //                     articlesDiv.append(articleTitle, articleByline, articleBlurb);
-        //                     $("#articles-space").prepend(articlesDiv);
-        //                 };
-        //             });
-        //     })
-        // }
-        //     // var opening = "<h31>Here are your articles on " + articleSearch + ". Enjoy!</h31>";
-        //     // var jLead = "response.response.docs";
-        //     // var jURL = "web_url";
-        //     // var jHead = "headline.main";
-        //     // var jByline = "byline.original";
-        //     // var jBlurb  = "lead_paragraph";
-        //     // var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
-        // } else {
-        //     var opening = "<h3>Voici vos articles au sujet de " + articleSearch + ". Bonne lecture !</h3>";
-        //     var jLead = "response.articles";
-        //     var jURL = "url";
-        //     var jHead = "title";
-        //     var jByline = "author";
-        //     var jBlurb  = "content";
-        //     var queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
-        // }
 
+
+function renderHTML(url, headline, author, content) {
+    $("#articles-space").empty();
+    var articlesDiv = $("<div class='card article'>");
+    var title = $("<p class='card title'>").html("<a target='_blank' href='" + url + "'>" + headline + "</a>");
+    var byline = $("<p class='card-text'>").html(author);
+    var blurb = $("<p class='card-text'>").html(content);
+    articlesDiv.append(title);
+    articlesDiv.append(byline);
+    articlesDiv.append(blurb);
+    articlesDiv.appendTo(myText);
+    $("#articles-space").prepend(myText);
+}
