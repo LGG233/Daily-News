@@ -1,7 +1,27 @@
 body {
     margin: 15px!important;
-    font-family: Arial, Helvetica, sans-serif!important;
-    background-color:white!important;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:white;
+}
+
+a {
+    color: white;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: red;
+}
+
+a:active {
+    color: black;
 }
 
 .header-text {
@@ -12,26 +32,25 @@ body {
     font-size: 12pt!important;
 }
 
-.container {
-    color: blue!important;
-}
 .title-bar {
-    font-family: 'Times New Roman', Times, serif!important;
+    font-family: 'Times New Roman', Times, serif;
     color: black;
 	text-shadow:
 		-2px -2px 0 white,
 		2px -2px 0 white,
 		-2px 2px 0 white,
 		2px 2px 0 white;
-    background-image: url(../images/blueblancrouge.jpg)!important;
-    background-color:white!important;
+    background-image: url(../images/blueblancrouge.jpg);
+    background-color:white;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.title {
+.headline {
     font-size: 12pt;
-    color: black!important;
+    background-color: royalblue;
+    color: red;
+
 }
 .article {
     color: black;
@@ -67,12 +86,12 @@ body {
 }
 
 .bodyText {
-    margin: 0 0 0 15px;.element {
+    margin: 0 0 0 15px;
 }
 
 .input-box {
-    width: 200px!important;
-    height: 50px!important;;
+    width: 200px;
+    height: 50px;
 }
 
 .button-text {

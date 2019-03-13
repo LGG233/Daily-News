@@ -160,7 +160,7 @@ function frenArticleSearch() {
 function renderHTML(url, headline, author, content) {
     $("#articles-space").empty();
     var articlesDiv = $("<div class='card article'>");
-    var title = $("<p class='card title'>").html("<a target='_blank' href='" + url + "'>" + headline + "</a>");
+    var title = $("<p class='card-title headline'>").html("<a target='_blank' href='" + url + "'>" + headline + "</a>");
     var byline = $("<p class='card-text'>").html(author);
     var blurb = $("<p class='card-text'>").html(content);
     articlesDiv.append(title);
