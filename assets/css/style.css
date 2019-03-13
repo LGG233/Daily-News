@@ -62,6 +62,10 @@ body {
     margin: 0 0 15px 15px;
 }
 
+.search-button {
+    margin: 3px;
+}
+
 .bodyText {
     margin: 0 0 0 15px;.element {
 }
@@ -73,8 +77,4 @@ body {
 
 .button-text {
     margin: 10px 3px 10px 0;
-}
-
-.button-gif {
-    margin: 10px;
 }

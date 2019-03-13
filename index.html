@@ -16,47 +16,18 @@
         <button id="english" class="lang-btn btn-primary" data-name="English">English</button>
         <button id="french" class="lang-btn btn-primary" data-name="French">Français</button>
     </div>
-    <div class="container">
+    <div class="container article-container">
         <div class="row">
-            <div class="col-md-2">
-                <p id="reading"><br><br>Articles come from <em>The New York Times</em>. Subscription required.</p>
+            <div class="col-lg-2 spacer">
+                <p id="reading">All articles come from <em>The New York Times</em>. Subscription required.</p>
+                <p>Search<br></p>
+                <span id="button-space"></span><br>
+                <span id="search-input"></span>
+                <button class="btn btn-primary" id="add-button" type="submit"></button>
             </div>
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body header-text">
-                        <blockquote class="blockquote mb-0">
-                            <p id="lang-lead">Click a button to get up to ten articles on that topic from the <em>New
-                                    York
-                                    Times</em></p>
-                            <div class="bodyText" id="button-space">Buttons go here</div>
-                        </blockquote>
-                        <div class="card-body">
-                            <div id="col-md-6">
-                                <blockquote class="blockquote mb-0">
-                                    <span id="search-input"><strong>What else do you want to read?</strong><input
-                                            id="searchText" type="text"></span>
-                                    <button class="btn-primary" id="add-button" type="submit">Set me up!</button>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="col-lg-10" id="articles-space"></div>
         </div>
     </div>
-    <div class="container article-container">
-        <!-- <div class="row">
-            <div class="col-lg-2 spacer">
-                <p id="placeholder-space1"></p>
-            </div>
-            <div class="col-lg-8 col-md-6 col-sm-4 bodyText">
-                <h4 id=articles-title></h4>
-            </div>
-        </div> -->
-        <div class="container">
-                <span id=articles-space></span>
-            </div>
-        </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/newsreader.js"></script>
 </body>
