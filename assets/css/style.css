@@ -48,10 +48,15 @@ a:active {
 
 .headline {
     font-size: 12pt;
-    background-color: royalblue;
+    background-color: dodgerblue;
     color: red;
-
 }
+
+#searchBar {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
 .article {
     color: black;
     font-size: 10pt;
