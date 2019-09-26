@@ -102,6 +102,7 @@ function addSearchButton() {
                 })
         }
         renderButtons();
+        getArticles();
     })
 }
 
@@ -125,15 +126,17 @@ function langChooser() {
 }
 
 function getArticles() {
-    console.log("getArticles is running");
+    // console.log("getArticles is running");
     $(".search-button").on("click", function () {
         articleSearch = $(this).attr("data-name");
+        console.log("this is the subject searched " + articleSearch);
+        console.log("Looking for articles");
         if (language === "English") {
             queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy"
-            engArticleSearch();
+            engArticleSearch(queryURL);
         } else {
             queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
-            frenArticleSearch();
+            frenArticleSearch(queryURL);
         }
     })
 };
@@ -176,8 +179,8 @@ function frenStartup() {
         })
 }
 
-function engArticleSearch() {
-    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
+function engArticleSearch(queryURL) {
+    // var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
     console.log(articleSearch);
     $.ajax({
         url: queryURL,
@@ -197,8 +200,8 @@ function engArticleSearch() {
         })
 }
 
-function frenArticleSearch() {
-    var queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
+function frenArticleSearch(queryURL) {
+    // var queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
     $.ajax({
         url: queryURL,
         method: "GET"
