@@ -59,13 +59,49 @@ function addSearchButton() {
         event.preventDefault();
         searchText = $("#searchText").val().trim();
         $("#searchText").text("");
+        var articleSearch = searchText;
         if (language === "English") {
             topics.push(searchText);
+            // console.log(articleSearch);
+            // engArticleSearch(articleSearch);
+            var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
+            console.log(articleSearch);
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+                    console.log(response);
+                    console.log("let's clear out the articles-space")
+                    myText = $("<div class='card-columns'></div>"); // reset div with articles
+                    for (var j = 0; j < 10; j++) {
+                        var headline = response.response.docs[j].headline.main;
+                        var url = response.response.docs[j].web_url;
+                        var author = response.response.docs[j].byline_original;
+                        var content = response.response.docs[j].lead_paragraph;
+                        renderHTML(url, headline, author, content);
+                    };
+                })
         } else {
             sujets.push(searchText);
+            var queryURL = "https://newsapi.org/v2/everything?q=" + articleSearch + "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+                    console.log(response);
+                    myText = $("<div class='card-columns'></div>"); // reset div with articles
+                    for (var j = 0; j < 10; j++) {
+                        var headline = response.articles[j].title;
+                        var url = response.articles[j].url;
+                        var author = response.articles[j].author;
+                        var content = response.articles[j].content;
+                        renderHTML(url, headline, author, content);
+                    };
+                })
         }
         renderButtons();
-        getArticles();
     })
 }
 
@@ -142,6 +178,7 @@ function frenStartup() {
 
 function engArticleSearch() {
     var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + articleSearch + "&page=0&sort=newest&api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
+    console.log(articleSearch);
     $.ajax({
         url: queryURL,
         method: "GET"
