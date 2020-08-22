@@ -200,7 +200,7 @@ function engStartup() {
 
 function frenStartup() {
   var queryURL =
-    "https://newsapi.org/v2/top-headlines?country=fr&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
+    "https://newsapi.org/v2/top-headlines?source=liberation&from='''2020-01-08'''&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
   $.ajax({
     url: queryURL,
     method: "GET",
