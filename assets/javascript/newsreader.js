@@ -198,6 +198,7 @@ function engStartup() {
   });
 }
 
+//this should be the updated api call
 function frenStartup() {
   var queryURL =
     "https://newsapi.org/v2/top-headlines?country=fr&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
