@@ -200,20 +200,20 @@ function engStartup() {
 
 //this should be the updated api call
 function frenStartup() {
-  var queryURL =
-    "https://newsapi.org/v2/top-headlines?country=fr&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
+  var queryURL = "https://www.liberation.fr/";
+  // "https://newsapi.org/v2/top-headlines?country=fr&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755&Connection=upgrade&Upgrade=HTTP/2.0";
   $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response) {
     console.log(response);
-    myText = $("<div class='card-columns'></div>"); // reset div with articles
-    for (var j = 0; j < 10; j++) {
-      var headline = response.articles[j].title;
-      var url = response.articles[j].url;
-      var author = response.articles[j].author;
-      var content = response.articles[j].content;
-      renderHTML(url, headline, author, content);
+    // myText = $("<div class='card-columns'></div>"); // reset div with articles
+    // for (var j = 0; j < 10; j++) {
+    //   var headline = response.articles[j].title;
+    //   var url = response.articles[j].url;
+    //   var author = response.articles[j].author;
+    //   var content = response.articles[j].content;
+    //   renderHTML(url, headline, author, content);
     }
   });
 }
