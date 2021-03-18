@@ -35,9 +35,9 @@ $(document).ready(function () {
 });
 
 function frenchify() {
-  $("#main-title").text("Les Nouvelles");
+  $("#main-title").text("Les Infos");
   $("#reading").html(
-    "Ces articles viennent de <em>Libération</em>. Abonnement obligatoire."
+    "Ces articles proviennent de plusieurs publications français dont beaucoup nécessitent un abonnement."
   );
   $("#searchBar").text("Recherche");
   $("#search-input").html(
