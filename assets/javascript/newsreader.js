@@ -171,14 +171,14 @@ function getArticles() {
       engArticleSearch(queryURL);
     } else {
       queryURL =
-        "https://newsapi.org/v2/everything?q=" +
+        "https://gnews.io/api/v4/search?q=" +
         articleSearch +
-        "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
+        "&lang=fr&country=fr&token=162269114e0a065f16fa0bda55a69006";
       frenArticleSearch(queryURL);
     }
   });
 }
-
+("top-headlines?lang=fr&country=fr&token=162269114e0a065f16fa0bda55a69006");
 function engStartup() {
   var queryURL =
     "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
@@ -200,24 +200,23 @@ function engStartup() {
 
 //this should be the updated api call
 function frenStartup() {
-  var queryURL = "https://www.liberation.fr/";
-  // "https://newsapi.org/v2/top-headlines?country=fr&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755&Connection=upgrade&Upgrade=HTTP/2.0";
-  fetch("https://www.liberation.fr/")
-    // $.ajax({
-    //   url: queryURL,
-    //   method: "GET",
-    // })
-    .then(function (response) {
-      console.log(response);
-      // myText = $("<div class='card-columns'></div>"); // reset div with articles
-      // for (var j = 0; j < 10; j++) {
-      //   var headline = response.articles[j].title;
-      //   var url = response.articles[j].url;
-      //   var author = response.articles[j].author;
-      //   var content = response.articles[j].content;
-      //   renderHTML(url, headline, author, content);
-      // }
-    });
+  var queryURL =
+    "https://gnews.io/api/v4/top-headlines?lang=fr&country=fr&token=162269114e0a065f16fa0bda55a69006";
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    crossDomain: true,
+  }).then(function (response) {
+    console.log(response);
+    myText = $("<div class='card-columns'></div>"); // reset div with articles
+    for (var j = 0; j < 10; j++) {
+      var headline = response.articles[j].title;
+      var url = response.articles[j].url;
+      var author = response.articles[j].author;
+      var content = response.articles[j].content;
+      renderHTML(url, headline, author, content);
+    }
+  });
 }
 
 function engArticleSearch(queryURL) {
