@@ -115,9 +115,9 @@ function addSearchButton() {
     } else {
       sujets.push(searchText);
       var queryURL =
-        "https://newsapi.org/v2/everything?q=" +
+        "https://gnews.io/api/v4/search?q=" +
         articleSearch +
-        "&sources=liberation&sortBy=popularity&apiKey=b39076bb4e5d4f61a4974e9c2ab2e755";
+        "&lang=fr&country=fr&token=162269114e0a065f16fa0bda55a69006";
       $.ajax({
         url: queryURL,
         method: "GET",
