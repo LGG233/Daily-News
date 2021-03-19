@@ -35,7 +35,7 @@ $(document).ready(function () {
 });
 
 function frenchify() {
-  $("#main-title").text("Les Infos");
+  $("#main-title").text("Les actualités du jour");
   $("#reading").html(
     "Ces articles proviennent de plusieurs publications français dont beaucoup nécessitent un abonnement."
   );
