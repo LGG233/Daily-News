@@ -178,7 +178,6 @@ function getArticles() {
     }
   });
 }
-("top-headlines?lang=fr&country=fr&token=162269114e0a065f16fa0bda55a69006");
 function engStartup() {
   var queryURL =
     "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
@@ -198,7 +197,6 @@ function engStartup() {
   });
 }
 
-//this should be the updated api call
 function frenStartup() {
   var queryURL =
     "https://gnews.io/api/v4/top-headlines?lang=fr&country=fr&token=162269114e0a065f16fa0bda55a69006";
@@ -226,9 +224,10 @@ function engArticleSearch(queryURL) {
     url: queryURL,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
     console.log("let's clear out the articles-space");
+    $("#articles-space").empty(); // clears any articles out of the DOM
     myText = $("<div class='card-columns'></div>"); // reset div with articles
+    console.log(response);
     for (var j = 0; j < 10; j++) {
       var headline = response.response.docs[j].headline.main;
       var url = response.response.docs[j].web_url;
@@ -246,6 +245,7 @@ function frenArticleSearch(queryURL) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    $("#articles-space").empty(); // clears any articles out of the DOM
     myText = $("<div class='card-columns'></div>"); // reset div with articles
     for (var j = 0; j < 10; j++) {
       var headline = response.articles[j].title;
