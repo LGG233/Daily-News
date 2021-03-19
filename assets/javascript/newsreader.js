@@ -49,7 +49,7 @@ function frenchify() {
 }
 
 function englishify() {
-  $("#main-title").text("The News");
+  $("#main-title").text("Today's News");
   $("#reading").html(
     "All articles come from <em>The New York Times</em>. Subscription required."
   );
