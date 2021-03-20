@@ -127,7 +127,7 @@ function addSearchButton() {
         for (var j = 0; j < 10; j++) {
           var headline = response.articles[j].title;
           var url = response.articles[j].url;
-          var author = response.articles[j].author;
+          var author = response.articles[j].source.name;
           var content = response.articles[j].content;
           renderHTML(url, headline, author, content);
         }
@@ -210,7 +210,7 @@ function frenStartup() {
     for (var j = 0; j < 10; j++) {
       var headline = response.articles[j].title;
       var url = response.articles[j].url;
-      var author = response.articles[j].author;
+      var author = response.articles[j].source.name;
       var content = response.articles[j].content;
       renderHTML(url, headline, author, content);
     }
@@ -250,7 +250,7 @@ function frenArticleSearch(queryURL) {
     for (var j = 0; j < 10; j++) {
       var headline = response.articles[j].title;
       var url = response.articles[j].url;
-      var author = response.articles[j].author;
+      var author = response.articles[j].source.name;
       var content = response.articles[j].content;
       renderHTML(url, headline, author, content);
     }
