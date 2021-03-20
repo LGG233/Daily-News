@@ -37,7 +37,7 @@ $(document).ready(function () {
 function frenchify() {
   $("#main-title").text("Les actualités du jour");
   $("#reading").html(
-    "Ces articles proviennent de plusieurs publications français dont beaucoup nécessitent un abonnement."
+    "Ces articles proviennent de plusieurs publications français dont beaucoup qui nécessitent un abonnement."
   );
   $("#searchBar").text("Recherche");
   $("#search-input").html(
