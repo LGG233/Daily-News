@@ -180,7 +180,7 @@ function getArticles() {
 }
 function engStartup() {
   var queryURL =
-    "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
+    "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=hh8LJpb49GiBE4VMM6TKst92CHnrv9cy";
   $.ajax({
     url: queryURL,
     method: "GET",
